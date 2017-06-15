@@ -1,0 +1,105 @@
+<div class="container-fluid">
+
+  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <a [routerLink]="['/login']">
+      <h1 class="navbar-brand mb-0">
+        Login
+      </h1>
+    </a>
+
+  </nav>
+
+  <div class="row page-header">
+    <div class="col-md-12">
+      <h1 class="text-center">Real Estate Listings</h1>
+      <p class="text-center">Find your perfect home in seconds</p>
+    </div>
+  </div>
+
+
+  <div class="col-sm-7 offset-sm-2">
+    <div id="imaginary_container">
+      <!--<div class="input-group stylish-input-group">-->
+      <!--<input type="text" class="form-control"  placeholder="Search e.g 3 bedrooms, 2 baths, blue walls, garden, 2 million e.t.c" >-->
+      <!--<span class="input-group-addon">-->
+      <!--<button type="submit">-->
+      <!--<i class="fa fa-search" aria-hidden="true"></i>-->
+      <!--</button>-->
+      <!--</span>-->
+      <!--</div>-->
+      <label class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Parking</span>
+      </label>
+      <label class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Garden</span>
+      </label>
+      <label class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Guest room</span>
+      </label>
+      <label class="custom-control custom-radio">
+        <input id="radio1" name="radio" type="radio" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">1 Bedroom</span>
+      </label>
+      <label class="custom-control custom-radio">
+        <input id="radio2" name="radio" type="radio" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">2 Bedroom</span>
+      </label>
+      <label class="custom-control custom-radio">
+        <input id="radio3" name="radio" type="radio" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">3 Bedroom</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="container container-pad" id="property-listings">
+    <div class="row">
+
+      <!-- Begin Listing: 609 W GRAVERS LN-->
+      <div class="col-sm-6" *ngFor="let property of properties">
+        <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+          <div class="media" [ngClass]="{'alert alert-danger': checkIfNewDistanceIsset(initialValue)}">
+            <a class="pull-left" [routerLink]="['/property-detail']">
+              <img alt="image" class="img-responsive" src="../../assets/images/house-1.jpg"></a>
+
+            <div class="clearfix visible-sm"></div>
+
+            <div class="media-body fnt-smaller">
+              <a href="#" target="_parent"></a>
+
+              <h4 class="media-heading"  >
+                <a href="#" target="_parent">Kshs {{property.price}} <small class="pull-right">{{ property.location }}</small></a></h4>
+
+              <ul class="list-inline">
+                <li class="list-inline-item">4,820 SqFt</li>
+
+                <li class="list-inline-item" style="list-style: none">|</li>
+
+                <li class="list-inline-item">5 Beds</li>
+
+                <li class="list-inline-item" style="list-style: none">|</li>
+
+                <li class="list-inline-item">5 Baths</li>
+              </ul>
+
+              <p class="hidden-xs text-center info-paragraph">
+                {{property.description}}
+              </p>
+            </div>
+          </div>
+        </div><!-- End Listing-->
+      </div>
+
+    </div>
+
+
+  </div><!-- End row -->
+</div>

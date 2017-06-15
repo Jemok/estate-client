@@ -1,0 +1,32 @@
+<div class="container-fluid">
+
+  <nav class="navbar navbar-default" style="background-color: #e3f2fd;">
+    <a [routerLink]="['/']">
+      <h1 class="navbar-brand mb-0">
+        Close
+      </h1>
+    </a>
+
+  </nav>
+
+  <div class="row col-sm-6 offset-3 image-div">
+    <carousel [interval]="false">
+      <slide>
+        <img src="../../assets/images/kitchen.jpg" height="450" width="450" alt="First slide">
+        <div class="carousel-caption">
+          <h3>Kitchen</h3>
+          <p>Fully equipped kitchen</p>
+        </div>
+      </slide>
+      <slide>
+        <img src="../../assets/images/bath-tab.jpg" height="450" width="450" alt="Second slide">
+        <div class="carousel-caption">
+          <h3>Bath</h3>
+          <p>Hot water available</p>
+        </div>
+      </slide>
+    </carousel>
+  </div>
+
+
+</div>
