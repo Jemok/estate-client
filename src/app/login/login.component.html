@@ -1,13 +1,50 @@
+<!--Navbar-->
+<nav class="navbar navbar-toggleable-md navbar-dark bg-primary">
+  <div class="container">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" [routerLink]="['/']" >
+      <span class="nav-text">
+        <strong>Homes</strong>
+      </span>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNav1">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item float-xs-right">
+          <a [routerLink]="['/']" class="nav-link">
+            <span class="nav-text">
+               Home
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <div class = "container">
+  <toaster-container></toaster-container>
+
   <div class="wrapper">
-    <form action="" class="form-signin">
+    <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
       <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
       <hr class="colorgraph"><br>
 
-      <input type="text" class="form-control" name="Username" placeholder="Username" required="" autofocus="" />
-      <input type="password" class="form-control" name="Password" placeholder="Password" required=""/>
+      <input type="email" class="form-control" [formControl]="email" placeholder="admin@gmail"/>
+      <div [hidden]="email.valid || email.untouched">
+        <div [hidden]="!email.hasError('required')" class="text-danger">
+          Email is required.
+        </div>
+      </div>
+      <input type="password" class="form-control" [formControl]="password" placeholder="Password"/>
+      <div [hidden]="password.valid || password.untouched">
+        <div [hidden]="!password.hasError('required')" class="text-danger">
+          The password is required.
+        </div>
+      </div>
 
-      <a class="btn btn-lg btn-primary btn-block" [routerLink]="['/dashboard']">Login</a>
+      <button class="btn btn-lg btn-primary btn-block" [disabled]="!loginForm.valid">Login</button>
     </form>
   </div>
 </div>

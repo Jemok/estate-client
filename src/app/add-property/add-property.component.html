@@ -1,10 +1,32 @@
+<nav class="navbar navbar-toggleable-md navbar-dark bg-primary">
+  <div class="container">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" [routerLink]="['/dashboard']" >
+      <span class="nav-text">
+        <strong>Homes</strong>
+      </span>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNav1">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item float-xs-right">
+          <a [routerLink]="['/']" class="nav-link">
+              <span class="nav-text">
+                  Logout
+              </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <div class="container offset-md-1" style="margin-top: 30px;">
-  <nav class="navbar navbar-light col-md-10" style="background-color: #e3f2fd;">
-    <span class="navbar-brand" href="#">Admin <span> <a [routerLink]="['/']" > Logout</a></span> </span>
-    <a class="btn btn-outline-success" [routerLink]="['/dashboard']">Back</a>
-  </nav>
   <div class="row">
     <form class="col-md-6 offset-2">
+      <h3 class="text-center">Add a home</h3>
+
       <div class="form-group">
         <label for="exampleInputEmail1">Owner Name</label>
         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="James">
@@ -18,41 +40,78 @@
       <div class="form-group">
         <label for="exampleInputEmail1">Phone Number</label>
         <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="0713456765">
-        <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+
+      <label class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Parking</span>
+      </label>
+
+      <label class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Garden</span>
+      </label>
+
+      <label class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Solar pannels</span>
+      </label>
+
+
+      <label class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Library</span>
+      </label>
+
+
+      <label class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Guest room</span>
+      </label>
+
+      <div class="form-group">
+        <p>No of rooms</p>
+        <label class="custom-control custom-radio">
+          <input id="radio1" name="radio" type="radio" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">1 Bedroom</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input id="radio2" name="radio" type="radio" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">2 Bedroom</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input id="radio2" name="radio" type="radio" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">3 Bedroom</span>
+        </label>
       </div>
 
       <div class="form-group">
-        <label for="exampleSelect1">No of rooms</label>
-        <select class="form-control" id="exampleSelect1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+        <p>No of bath rooms</p>
+        <label class="custom-control custom-radio">
+          <input id="radio1" name="radio" type="radio" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">1 Bathroom</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input id="radio2" name="radio" type="radio" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">2 Bathroom</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input id="radio2" name="radio" type="radio" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">3 Bathroom</span>
+        </label>
       </div>
 
-      <div class="form-group">
-        <label for="exampleSelect1">No of baths</label>
-        <select class="form-control" id="exampleSelect1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="exampleSelect1">No of floors</label>
-        <select class="form-control" id="exampleSelect1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
       <div class="form-group">
         <label for="exampleTextarea">Property description</label>
         <textarea class="form-control" id="exampleTextarea" placeholder="Property description" rows="3"></textarea>
@@ -62,7 +121,9 @@
         <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
     </form>
   </div>
 </div>

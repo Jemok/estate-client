@@ -14,7 +14,8 @@ import { PropertyDetailComponent } from './property-detail/property-detail.compo
 import {ToasterModule} from "angular2-toaster/angular2-toaster";
 import {PropertyService} from "./services/property.service";
 import {HttpModule} from "@angular/http";
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {AuthServiceService} from "./services/auth.service";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import {HttpModule} from "@angular/http";
     PropertyDetailComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     BsDropdownModule.forRoot(),
     HttpModule,
@@ -33,7 +36,7 @@ import {HttpModule} from "@angular/http";
     ToasterModule,
     routing
   ],
-  providers: [PropertyService],
+  providers: [AuthServiceService, PropertyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
