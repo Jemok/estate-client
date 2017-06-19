@@ -26,67 +26,67 @@
   <toaster-container></toaster-container>
 
   <div class="row">
-    <form class="col-md-6 offset-2" [formGroup]="propertyForm" (ngSubmit)="addProperty(propertyForm.value)">
-      <h3 class="text-center">Add a home</h3>
+    <form class="col-md-6 offset-2" [formGroup]="propertyForm" (ngSubmit)="updateProperty(propertyForm.value)" *ngIf="property">
+      <h3 class="text-center">Edit {{property.houseName}}</h3>
 
       <div class="form-group">
         <label for="owner">Owner Name</label>
-        <input type="text" class="form-control" id="owner" aria-describedby="emailHelp" placeholder="James" [formControl]="owner">
+        <input type="text" class="form-control" id="owner" aria-describedby="emailHelp" placeholder="James" [formControl]="owner" [(ngModel)]="property.owner" >
       </div>
 
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="user@gmail.com" [formControl]="email">
+        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="user@gmail.com" [formControl]="email" [(ngModel)]="property.email">
       </div>
 
       <div class="form-group">
         <label for="phone">Phone Number</label>
-        <input type="text" class="form-control" id="phone" placeholder="0713456765" [formControl]="phone">
+        <input type="text" class="form-control" id="phone" placeholder="0713456765" [formControl]="phone" [(ngModel)]="property.phone">
       </div>
 
       <div class="form-group">
         <label for="property">Property Name</label>
-        <input type="text" class="form-control" id="property" aria-describedby="property" placeholder="Property name" [formControl]="property">
+        <input type="text" class="form-control" id="property" aria-describedby="property" placeholder="Property name" [formControl]="propertyName" [(ngModel)]="property.houseName">
       </div>
 
       <div class="form-group">
         <label for="location">Location</label>
-        <input type="text" class="form-control" id="location" aria-describedby="location" placeholder="Property location" [formControl]="location">
+        <input type="text" class="form-control" id="location" aria-describedby="location" placeholder="Property location" [formControl]="location" [(ngModel)]="property.location">
       </div>
 
       <div class="form-group">
         <label for="price">Price</label>
-        <input type="number" class="form-control" id="price" aria-describedby="location" placeholder="Property price" [formControl]="price">
+        <input type="number" class="form-control" id="price" aria-describedby="location" placeholder="Property price" [formControl]="price" [(ngModel)]="property.price">
       </div>
 
       <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" (click)="setCriteria('parking')">
+        <input type="checkbox" class="custom-control-input" [checked]="property.carPack === 1" (click)="setCriteria('parking')">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Parking</span>
       </label>
 
       <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" (click)="setCriteria('garden')">
+        <input type="checkbox" class="custom-control-input" [checked]="property.garden === 1" (click)="setCriteria('garden')">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Garden</span>
       </label>
 
       <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" (click)="setCriteria('solar_pannels')">
+        <input type="checkbox" class="custom-control-input" [checked]="property.solarPannels === 1" (click)="setCriteria('solar_pannels')">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Solar pannels</span>
       </label>
 
 
       <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" (click)="setCriteria('library')">
+        <input type="checkbox" class="custom-control-input" [checked]="property.library === 1" (click)="setCriteria('library')">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Library</span>
       </label>
 
 
       <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" (click)="setCriteria('guest_room')">
+        <input type="checkbox" class="custom-control-input" [checked]="property.guestRoom === 1" (click)="setCriteria('guest_room')">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Guest room</span>
       </label>
@@ -94,17 +94,17 @@
       <div class="form-group">
         <p>No of rooms</p>
         <label class="custom-control custom-radio">
-          <input id="one_bed" name="bed" type="radio" class="custom-control-input" (click)="setCriteria('one_bedroom')">
+          <input id="one_bed" name="bed" type="radio" class="custom-control-input" [checked]="property.oneBedroom === 1" (click)="setCriteria('one_bedroom')">
           <span class="custom-control-indicator"></span>
           <span class="custom-control-description">1 Bedroom</span>
         </label>
         <label class="custom-control custom-radio">
-          <input id="two_bed" name="bed" type="radio" class="custom-control-input" (click)="setCriteria('two_bedroom')">
+          <input id="two_bed" name="bed" type="radio" class="custom-control-input" [checked]="property.twoBedroom === 1" (click)="setCriteria('two_bedroom')">
           <span class="custom-control-indicator"></span>
           <span class="custom-control-description">2 Bedroom</span>
         </label>
         <label class="custom-control custom-radio">
-          <input id="three_bed" name="bed" type="radio" class="custom-control-input" (click)="setCriteria('three_bedroom')">
+          <input id="three_bed" name="bed" type="radio" class="custom-control-input" [checked]="property.threeBedroom === 1"  (click)="setCriteria('three_bedroom')">
           <span class="custom-control-indicator"></span>
           <span class="custom-control-description">3 Bedroom</span>
         </label>
@@ -113,17 +113,17 @@
       <div class="form-group">
         <p>No of bath rooms</p>
         <label class="custom-control custom-radio">
-          <input id="one_bath" name="bath" type="radio" class="custom-control-input" (click)="setCriteria('one_bathroom')">
+          <input id="one_bath" name="bath" type="radio" class="custom-control-input" [checked]="property.oneBathroom === 1"  (click)="setCriteria('one_bathroom')">
           <span class="custom-control-indicator"></span>
           <span class="custom-control-description">1 Bathroom</span>
         </label>
         <label class="custom-control custom-radio">
-          <input id="two_bath" name="bath" type="radio" class="custom-control-input" (click)="setCriteria('two_bathroom')">
+          <input id="two_bath" name="bath" type="radio" class="custom-control-input" [checked]="property.twoBathroom === 1" (click)="setCriteria('two_bathroom')">
           <span class="custom-control-indicator"></span>
           <span class="custom-control-description">2 Bathroom</span>
         </label>
         <label class="custom-control custom-radio">
-          <input id="three_bath" name="bath" type="radio" class="custom-control-input" (click)="setCriteria('three_bathroom')">
+          <input id="three_bath" name="bath" type="radio" class="custom-control-input" [checked]="property.threeBathroom === 1" (click)="setCriteria('three_bathroom')">
           <span class="custom-control-indicator"></span>
           <span class="custom-control-description">3 Bathroom</span>
         </label>
@@ -131,12 +131,12 @@
 
       <div class="form-group">
         <label for="description">Property description</label>
-        <textarea class="form-control" id="description" placeholder="Property description" rows="3" [formControl]="description"></textarea>
+        <textarea class="form-control" id="description" placeholder="Property description" rows="3" [formControl]="description" [(ngModel)]="property.description"></textarea>
       </div>
 
       <!--<div class="form-group">-->
-        <!--<label for="exampleInputFile">Upload image</label>-->
-        <!--<input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">-->
+      <!--<label for="exampleInputFile">Upload image</label>-->
+      <!--<input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">-->
       <!--</div>-->
 
       <div class="text-center">

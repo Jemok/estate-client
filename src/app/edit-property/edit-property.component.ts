@@ -2,13 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 import {ToasterService} from "angular2-toaster/angular2-toaster";
 import {PropertyService} from "../services/property.service";
+import {ActivatedRoute} from "@angular/router";
+import {Property} from "../interfaces/property";
+
 
 @Component({
-  selector: 'app-add-property',
-  templateUrl: './add-property.component.html',
-  styleUrls: ['./add-property.component.css']
+  selector: 'app-edit-property',
+  templateUrl: './edit-property.component.html',
+  styleUrls: ['./edit-property.component.css']
 })
-export class AddPropertyComponent implements OnInit {
+export class EditPropertyComponent implements OnInit {
+
+  property : Property;
 
   propertyForm: FormGroup;
 
@@ -20,7 +25,7 @@ export class AddPropertyComponent implements OnInit {
 
   description : FormControl;
 
-  property : FormControl;
+  propertyName : FormControl;
 
   location : FormControl;
 
@@ -38,13 +43,31 @@ export class AddPropertyComponent implements OnInit {
   library       : number = 0;
   solar_pannels : number = 0;
 
+  houseId : number;
 
-  constructor(public propertyHttpService : PropertyService,
+  constructor(public route: ActivatedRoute,
+              public propertyHttpService : PropertyService,
               public builder: FormBuilder,
               public toasterService: ToasterService,) { }
 
   ngOnInit() {
     this.makePropertyForm();
+    this.getHouse();
+  }
+
+  getHouse(){
+    this.route.params.subscribe(params => {
+      this.houseId = params['houseId'];
+      this.propertyHttpService.showProperty({houseId : this.houseId})
+          .subscribe(data => {
+            this.property = data;
+            console.log(this.property);
+          }, error => {
+            this.toasterService.pop('error', 'Error', error.message)
+          }, () => {
+            this.checkCriteria();
+          })
+    });
   }
 
   makePropertyForm(){
@@ -65,7 +88,7 @@ export class AddPropertyComponent implements OnInit {
       Validators.required,
     ]);
 
-    this.property = new FormControl('', [
+    this.propertyName = new FormControl('', [
       Validators.required,
     ]);
 
@@ -82,15 +105,16 @@ export class AddPropertyComponent implements OnInit {
       email: this.email,
       phone: this.phone,
       description : this.description,
-      property    : this.property,
+      propertyName    : this.propertyName,
       location    : this.location,
       price       : this.price
     });
   }
 
 
-  addProperty(propertyData){
+  updateProperty(propertyData){
 
+    propertyData.houseId = this.property.houseId;
     propertyData.parking = this.parking;
     propertyData.garden  = this.garden;
     propertyData.one_bedroom = this.one_bedroom;
@@ -104,7 +128,7 @@ export class AddPropertyComponent implements OnInit {
     propertyData.solar_pannels  = this.solar_pannels;
 
 
-    this.propertyHttpService.addProperty(propertyData).subscribe(data => {
+    this.propertyHttpService.updateProperty(propertyData).subscribe(data => {
       this.toasterService.pop('success', 'Created', data.message);
 
     }, error => {
@@ -159,4 +183,51 @@ export class AddPropertyComponent implements OnInit {
       this.solar_pannels = 1
     }
   }
+
+  checkCriteria(){
+
+    if(this.property.carPack === 1){
+      this.parking = 1
+    }
+    if(this.property.garden === 1 ){
+      this.garden = 1
+    }
+
+    if(this.property.oneBedroom === 1){
+      this.one_bedroom = 1
+    }
+
+    if(this.property.twoBedroom === 1){
+      this.two_bedroom = 1
+    }
+
+    if(this.property.threeBedroom === 1){
+      this.three_bedroom = 1
+    }
+
+    if(this.property.oneBathroom === 1){
+      this.one_bathroom = 1
+    }
+
+    if(this.property.twoBathroom === 1){
+      this.two_bathroom = 1
+    }
+
+    if(this.property.threeBathroom === 1){
+      this.three_bathroom = 1
+    }
+
+    if(this.property.guestRoom === 1){
+      this.guest_room = 1
+    }
+
+    if(this.property.library === 1){
+      this.library = 1
+    }
+
+    if(this.property.solarPannels === 1){
+      this.solar_pannels = 1
+    }
+  }
+
 }

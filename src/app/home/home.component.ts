@@ -18,6 +18,10 @@ export class HomeComponent implements OnInit {
 
   instance = [];
 
+  placeholder : string = '../../assets/images/holder.jpg';
+
+  range : number = 3;
+
   parking : number = 0;
   garden  : number = 0;
   one_bedroom : number = 0;
@@ -96,7 +100,7 @@ export class HomeComponent implements OnInit {
   }
 
   search(){
-    this.propertyHttpService.search({instance : [this.parking, this.garden, this.one_bedroom,this.two_bedroom, this.three_bedroom, this.one_bathroom, this.two_bathroom, this.three_bathroom, this.guest_room, this.library, this.solar_pannels ]}).subscribe(response => {
+    this.propertyHttpService.search({range : this.range, instance : [this.parking, this.garden, this.one_bedroom,this.two_bedroom, this.three_bedroom, this.one_bathroom, this.two_bathroom, this.three_bathroom, this.guest_room, this.library, this.solar_pannels ]}).subscribe(response => {
       this.newdistance = response;
       console.log(this.newdistance);
       this.reCheckIfNewDistanceIsset();
@@ -135,5 +139,10 @@ export class HomeComponent implements OnInit {
 
       value = value + 1;
     });
+  }
+
+  setRange(range){
+
+    this.range = range;
   }
 }

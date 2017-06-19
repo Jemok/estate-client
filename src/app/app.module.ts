@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppComponent } from './app.component';
@@ -16,6 +17,9 @@ import {PropertyService} from "./services/property.service";
 import {HttpModule} from "@angular/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthServiceService} from "./services/auth.service";
+import { EditPropertyComponent } from './edit-property/edit-property.component';
+import {AngularFireModule} from "angularfire2/index";
+import {firebaseConfig} from "./app.constants";
 
 @NgModule({
   declarations: [
@@ -24,13 +28,16 @@ import {AuthServiceService} from "./services/auth.service";
     LoginComponent,
     DashboardComponent,
     AddPropertyComponent,
-    PropertyDetailComponent
+    PropertyDetailComponent,
+    EditPropertyComponent
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig),
     HttpModule,
     CarouselModule.forRoot(),
     ToasterModule,

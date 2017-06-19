@@ -34,70 +34,112 @@
   <div class="col-sm-8 offset-sm-2">
     <div id="imaginary_container" class="card card-inverse card-info mb-3 text-center nav-text">
       <div class="card-block">
-      <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" (click)="setCriteria('parking')">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">Parking</span>
-      </label>
-      <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" (click)="setCriteria('garden')">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">Garden</span>
-      </label>
-      <label class="custom-control custom-radio">
-        <input name="bed" type="radio" class="custom-control-input" (click)="setCriteria('one_bedroom')">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">1 Bedroom</span>
-      </label>
-      <label class="custom-control custom-radio">
-        <input name="bed" type="radio" class="custom-control-input" (click)="setCriteria('two_bedroom')">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">2 Bedroom</span>
-      </label>
-      <label class="custom-control custom-radio">
-        <input name="bed" type="radio" class="custom-control-input" (click)="setCriteria('three_bedroom')">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">3 Bedroom</span>
-      </label>
-      <label class="custom-control custom-radio">
-        <input name="bath" type="radio" class="custom-control-input" (click)="setCriteria('one_bathroom')">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">1 Bathroom</span>
-      </label>
-      <label class="custom-control custom-radio">
-        <input name="bath" type="radio" class="custom-control-input" (click)="setCriteria('two_bathroom')">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">2 Bathroom</span>
-      </label>
-      <label class="custom-control custom-radio">
-        <input name="bath" type="radio" class="custom-control-input" (click)="setCriteria('three_bathroom')">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">3 Bathroom</span>
-      </label>
-      <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" (click)="setCriteria('guest_room')">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">Guest room</span>
-      </label>
-      <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" (click)="setCriteria('library')">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">Library</span>
-      </label>
-      <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" (click)="setCriteria('solar_pannels')">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">Solar pannels</span>
-      </label>
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" (click)="setCriteria('parking')">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Parking</span>
+        </label>
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" (click)="setCriteria('garden')">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Garden</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input name="bed" type="radio" class="custom-control-input" (click)="setCriteria('one_bedroom')">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">1 Bedroom</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input name="bed" type="radio" class="custom-control-input" (click)="setCriteria('two_bedroom')">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">2 Bedroom</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input name="bed" type="radio" class="custom-control-input" (click)="setCriteria('three_bedroom')">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">3 Bedroom</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input name="bath" type="radio" class="custom-control-input" (click)="setCriteria('one_bathroom')">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">1 Bathroom</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input name="bath" type="radio" class="custom-control-input" (click)="setCriteria('two_bathroom')">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">2 Bathroom</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input name="bath" type="radio" class="custom-control-input" (click)="setCriteria('three_bathroom')">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">3 Bathroom</span>
+        </label>
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" (click)="setCriteria('guest_room')">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Guest room</span>
+        </label>
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" (click)="setCriteria('library')">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Library</span>
+        </label>
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" (click)="setCriteria('solar_pannels')">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Solar pannels</span>
+        </label>
       </div>
     </div>
     <div class="text-center">
       <button class="btn btn-primary" (click)="search()">
-         Find homes <i class="fa fa-search" aria-hidden="true"></i>
+        Find homes <i class="fa fa-search" aria-hidden="true"></i>
       </button>
+      <div class="btn-group pull-right" role="group">
+        <button type="button"
+                class="btn btn-default dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">
+          Range : {{ range }}
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a (click)="setRange(1)">
+              Range 1
+            </a>
+          </li>
+          <li>
+            <a (click)="setRange(2)">
+              Range 2
+            </a>
+          </li>
+          <li>
+            <a (click)="setRange(3)">
+              Range 3
+            </a>
+          </li>
+          <li>
+            <a (click)="setRange(4)">
+              Range 4
+            </a>
+          </li>
+          <li>
+            <a (click)="setRange(5)">
+              Range 5
+            </a>
+          </li>
+          <li>
+            <a (click)="setRange(6)">
+              Range 6
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-
   </div>
+
 
   <div class="container container-pad" id="property-listings">
     <div class="row">
@@ -106,42 +148,48 @@
       <div class="col-sm-6" *ngFor="let property of properties">
         <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
           <div class="media" [ngClass]="{'alert alert-success': property.class_exists}">
-            <a class="pull-left" [routerLink]="['/property-detail']">
-              <img alt="image" class="img-responsive" src="../../assets/images/house-1.jpg"></a>
+            <a class="pull-left" [routerLink]="['/property-detail/', property.houseId]">
+              <img alt="image" class="img-responsive" height="150" width="230" [src]="property.image || placeholder"></a>
 
             <div class="clearfix visible-sm"></div>
 
             <div class="media-body fnt-smaller">
-              <a href="#" target="_parent"></a>
-
               <h4 class="media-heading"  >
-                <a href="#" target="_parent">
-                  Kshs {{property.price}}
-                  <small class="pull-right">
-                    {{ property.location }}
+                <a [routerLink]="['/property-detail/', property.houseId]">
+                  <span style="font-size: 16px;" >
+                    {{ property.houseName }} - {{ property.location }}
+                  </span>
+                  <span style="font-size: 12px;" class="pull-right">
+                    Kshs {{property.price}}
                     <span class="badge badge-success" *ngIf="reCheckIfNewDistanceIsset(initialValue) || property.class_exists">
                       <i class="fa fa-check" aria-hidden="true"></i>
                     </span>
-                  </small>
+                  </span>
+
                 </a>
+                <p style="font-size: 12px;">Owner : {{property.owner}}</p>
+                <p style="font-size: 12px;">Phone : {{property.phone}}</p>
+                <p style="font-size: 12px;">Email : {{property.email}}</p>
+
               </h4>
 
               <div class="text-center">
-                <a [routerLink]="['/property-detail']" class="btn btn-sm btn-info">
+                <a [routerLink]="['/property-detail/', property.houseId]" class="btn btn-sm btn-info">
                   View
+                  <i class="fa fa-eye" aria-hidden="true"></i>
                 </a>
               </div>
 
               <!--<ul class="list-inline">-->
-                <!--<li class="list-inline-item">4,820 SqFt</li>-->
+              <!--<li class="list-inline-item">4,820 SqFt</li>-->
 
-                <!--<li class="list-inline-item" style="list-style: none">|</li>-->
+              <!--<li class="list-inline-item" style="list-style: none">|</li>-->
 
-                <!--<li class="list-inline-item">5 Beds</li>-->
+              <!--<li class="list-inline-item">5 Beds</li>-->
 
-                <!--<li class="list-inline-item" style="list-style: none">|</li>-->
+              <!--<li class="list-inline-item" style="list-style: none">|</li>-->
 
-                <!--<li class="list-inline-item">5 Baths</li>-->
+              <!--<li class="list-inline-item">5 Baths</li>-->
               <!--</ul>-->
 
               <p class="hidden-xs text-center info-paragraph">

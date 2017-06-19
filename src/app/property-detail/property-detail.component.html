@@ -5,8 +5,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav1">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item float-xs-right">
+        <li class="nav-item float-xs-right" *ngIf="!checkIfLoggedIn()">
           <a [routerLink]="['/']" class="nav-link">
+            <span class="nav-text">
+               Close
+            </span>
+          </a>
+        </li>
+        <li class="nav-item float-xs-right" *ngIf="checkIfLoggedIn()">
+          <a [routerLink]="['/dashboard']" class="nav-link">
             <span class="nav-text">
                Close
             </span>
@@ -17,24 +24,63 @@
   </div>
 </nav>
 <div class="container-fluid">
-  <div class="row col-sm-6 offset-3 image-div">
-    <carousel [interval]="false">
-      <slide>
-        <img src="../../assets/images/kitchen.jpg" height="450" width="450" alt="First slide">
-        <div class="carousel-caption">
-          <h3>Kitchen</h3>
-          <p>Fully equipped kitchen</p>
-        </div>
-      </slide>
-      <slide>
-        <img src="../../assets/images/bath-tab.jpg" height="450" width="450" alt="Second slide">
-        <div class="carousel-caption">
-          <h3>Bath</h3>
-          <p>Hot water available</p>
-        </div>
-      </slide>
-    </carousel>
+  <div class="row offset-2 image-div">
+
+    <div class="col-sm-6">
+      <carousel [interval]="false" *ngIf="property">
+        <slide *ngFor="let image of property.images">
+          <img [src]="image.image" height="450" width="450" alt="First slide">
+          <div class="carousel-caption">
+            <p style="color: blue;">{{ property.description }}</p>
+          </div>
+        </slide>
+      </carousel>
+    </div>
+    <div class="col-sm-4" *ngIf="property">
+      <h5>{{ property.houseName}} {{property.location}} - Kshs {{property.price}}</h5>
+      <p>Description : {{ property.description }}</p>
+      <p>Car Pack :
+        <i class="fa fa-check" aria-hidden="true" *ngIf="property.carPack === 1"></i>
+        <i class="fa fa-times" aria-hidden="true" *ngIf="property.carPack === 0"></i>
+      </p>
+      <p>Garden :
+        <i class="fa fa-check" aria-hidden="true" *ngIf="property.garden === 1"></i>
+        <i class="fa fa-times" aria-hidden="true" *ngIf="property.garden === 0"></i>
+      </p>
+      <p>Bed rooms :
+        <span *ngIf="property.oneBedroom === 1">
+            1
+          </span>
+        <span *ngIf="property.twoBedroom === 1">
+            2
+        </span>
+        <span *ngIf="property.threeBedroom === 1">
+            3
+        </span>
+      </p>
+      <p>Bath rooms :
+        <span *ngIf="property.oneBathroom === 1">
+            1
+          </span>
+        <span *ngIf="property.twoBathroom === 1">
+            2
+        </span>
+        <span *ngIf="property.threeBathroom === 1">
+            3
+        </span>
+      </p>
+      <p>Guest room :
+        <i class="fa fa-check" aria-hidden="true" *ngIf="property.guestRoom === 1"></i>
+        <i class="fa fa-times" aria-hidden="true" *ngIf="property.guestRoom === 0"></i>
+      </p>
+      <p>Library :
+        <i class="fa fa-check" aria-hidden="true" *ngIf="property.library === 1"></i>
+        <i class="fa fa-times" aria-hidden="true" *ngIf="property.library === 0"></i>
+      </p>
+      <p>Solar pannels :
+        <i class="fa fa-check" aria-hidden="true" *ngIf="property.solarPannels === 1"></i>
+        <i class="fa fa-times" aria-hidden="true" *ngIf="property.solarPannels === 0"></i>
+      </p>
+    </div>
   </div>
-
-
 </div>
